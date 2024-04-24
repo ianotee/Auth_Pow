@@ -1,0 +1,13 @@
+
+
+<ul>
+
+<%= if Pow.Plug.current_user(@conn) do %>
+
+<li><%= @current_user.email %></li>
+<% end %>
+
+</ul>
+<.link :if={Pow.Plug.current_user(@conn)} href={~p"/session"} method="delete">Sign out</.link>
+<.link :if={is_nil Pow.Plug.current_user(@conn)} navigate={~p"/registration/new"}>Registration</.link>
+<.link :if={is_nil Pow.Plug.current_user(@conn)} navigate={~p"/session/new"}>Sign In</.link>
